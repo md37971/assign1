@@ -23,6 +23,9 @@ app.get("/users", function (req, res) {
   });
 });
 
+//Second task, make it to where it posts the data.
+//Download Bruno (usebruno.com) to make http requests.
+
 
 app.listen(3000, function () {
   console.log("Listening on port 3000..");
