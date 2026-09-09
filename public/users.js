@@ -1,5 +1,5 @@
 async function userListController() { //Background network function for fetching, using promises.
-    let repsonse = await fetch('http://localhot:3000/user'); //The function we're returning is a promise.
+    let repsonse = await fetch('http://localhost:3000/user'); //The function we're returning is a promise.
     let user = await response.json(); //Gets response and converts it into json.
 
     userListView(users);
@@ -26,4 +26,6 @@ function userListView(users) {
         `<tr><td>${user['username']}</td>` +
         `<tr><td>${user['password']}</td></tr></tbody>`;
     });
+
+    table.innerHTML = view;
 }
