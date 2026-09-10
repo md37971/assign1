@@ -8,36 +8,70 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 
+    <!--Javascripts must be imported to HTML file to run.-->
+    <script src="app1.js"></script>
+    <script src="users.js"></script>
+
     <style>
         #message {
             display: inline;
             font-size: small;
             margin: 5px;
         }
+
+        .formContainer {
+            padding:1.25rem;
+            border: 5px solid lightgray;
+            border-radius: 1.25rem;
+            margin-top:5%;
+        }
     </style>
 </head>
 
 <body>
+    <script>
+        userListController(); //Run the controller to fetch from the API.
+    </script>
+
 
     <!-- Image and text -->
     <nav class="navbar navbar-light bg-light" style="margin-bottom: 20px">
-        <a class="navbar-brand p-2 mb-2" href="/">
+        <a class="navbar-brand p-2 mb-2" href="home.html">
             CSCE 41333 Cloud App Development Simple SPA
         </a>
     </nav>
     <div class="container">
         <div class="col">
-            <button id="refresh" class="btn btn-primary">Refresh Users</button>
+            <button id="refresh" class="btn btn-primary" href="home.html">Refresh Users</button>
             <div id="message"></div>
             <table id="usertable" class="table table-bordered table-striped">
-                <script>
-                    for(let i = 0; i < 5; i++) {
-                        
-                    }
-                </script>
+                <!--app.js code fills this table already.-->
             </table>
         </div>
+
+    <div class="formContainer">
+    <h3 style="margin-bottom:2.5%;">Add a New User</h3>
+        <form>
+            <label for="firstname" class="form-label">First Name</label><br>
+            <input type="text" id="firstname" name="firstname" class="form-control mb-3"></input>
+            <label for="lastname" class="form-label">Last Name</label><br>
+            <input type="text" id="lastname" name="lastname" class="form-control mb-3"></input>
+            <label for="email" class="form-label">Email</label><br>
+            <input type="text" id="email" name="email" class="form-control mb-3"></input>
+            <label for="username" class="form-label">User Name</label><br>
+            <input type="text" id="username" name="username" class="form-control mb-3"></input>
+            <label for="passwd" class="form-label">Password</label><br>
+            <input type="text" id="passwd" name="passwd" class="form-control mb-3"></input>
+            <label for="urole" class="form-label">U-Role</label><br>
+            <input type="text" id="urole" name="urole" class="form-control mb-3"></input>
+            <button type="button" id="submitButton" class="btn btn-primary">Add User</button>
+        </form>
     </div>
+
+    <script>
+        const submitButton = document.getElementById("submitButton");
+        submitButton.addEventListener("click",createNewUser);
+    </script>
 
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"

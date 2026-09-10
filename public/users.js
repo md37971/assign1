@@ -1,10 +1,10 @@
 async function userListController() { //Background network function for fetching, using promises.
-    let repsonse = await fetch('http://localhost:3000/user'); //The function we're returning is a promise.
-    let user = await response.json(); //Gets response and converts it into json.
+    let response = await fetch('http://localhost:3000/users'); //The function we're returning is a promise.
+    let users = await response.json(); //Gets response and converts it into json.
 
     userListView(users);
     return users;
-}
+};
 
 function userListView(users) {
     //<table id="usertable"> - Retrieve a pointer to this table so that we can modify it.
@@ -14,18 +14,51 @@ function userListView(users) {
                         `<th>Last Name</th>` +
                         `<th>First Name</th>` +
                         `<th>Email</th>` +
+                        `<th>U-Role</th>` +
                         `<th>Username</th>` +
-                        `<th>Password</th></tr></thead>`;
+                        `<th>Password</th>` +
+                        `<th>Last Modified</th></tr></thead>`;
 
-    users.forEach(element => {
+    users.forEach(user => {
         view = view + 
-        `<tbody><tr><td>${user['userID']}</td>` +
-        `<tr><td>${user['lastname']}</td>` +
-        `<tr><td>${user['firstname']}</td>` +
-        `<tr><td>${user['email']}</td>` +
-        `<tr><td>${user['username']}</td>` +
-        `<tr><td>${user['password']}</td></tr></tbody>`;
+        `<tbody><tr><td>${user['userID']}</td> ` +
+        `<td>${user['lastname']}</td>` +
+        `<td>${user['firstname']}</td>` +
+        `<td>${user['email']}</td>` +
+        `<td>${user['urole']}</td>` +
+        `<td>${user['username']}</td>` +
+        `<td>${user['passwd']}</td>` +
+        `<td>${user['lastModified']}</tr></tbody>`;
     });
 
     table.innerHTML = view;
-}
+    
+};
+
+
+//Creating a new user.
+function createNewUser() {
+    let firstname = document.getElementById("firstname").value;
+    let lastname = document.getElementById("lastname").value;
+    let username = document.getElementById("username").value;
+    let passwd = document.getElementById("passwd").value;
+    let email = document.getElementById("email").value;
+    let urole = document.getElementById("urole").value;
+
+    const testString = `${firstname} ${lastname} ${username} ${passwd} ${email} ${urole}`;
+    alert(testString);
+
+    /*
+    const User = {
+    // Create
+        async create(userData) {
+            const { username, lastname, firstname, passwd, email, urole } = userData;
+            const sql = `INSERT INTO users (username, lastname, firstname, passwd, email, urole) VALUES (?, ?, ?, ?, ?, ?)`;
+            const [result] = await db.execute(sql, [username, lastname, firstname, passwd, email, urole]);
+            return result.insertId;
+        }
+    }
+        */
+
+};
+
