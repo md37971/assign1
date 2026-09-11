@@ -45,20 +45,21 @@ function createNewUser() {
     let email = document.getElementById("email").value;
     let urole = document.getElementById("urole").value;
 
-    const testString = `${firstname} ${lastname} ${username} ${passwd} ${email} ${urole}`;
-    alert(testString);
+    const newuser = {
+        username: username,
+        lastname : lastname,
+        firstname : firstname,
+        passwd : passwd,
+        email : email,
+        urole : urole
+    };
 
-    /*
-    const User = {
-    // Create
-        async create(userData) {
-            const { username, lastname, firstname, passwd, email, urole } = userData;
-            const sql = `INSERT INTO users (username, lastname, firstname, passwd, email, urole) VALUES (?, ?, ?, ?, ?, ?)`;
-            const [result] = await db.execute(sql, [username, lastname, firstname, passwd, email, urole]);
-            return result.insertId;
-        }
-    }
-        */
 
+    fetch('http://localhost:3000/users', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newuser)
+    });
 };
-

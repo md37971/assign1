@@ -25,6 +25,11 @@
             border-radius: 1.25rem;
             margin-top:5%;
         }
+
+        #buttonText {
+            color:white;
+            text-decoration: none;
+        }
     </style>
 </head>
 
@@ -42,7 +47,14 @@
     </nav>
     <div class="container">
         <div class="col">
-            <button id="refresh" class="btn btn-primary" href="home.html">Refresh Users</button>
+            <button id="refresh" class="btn btn-primary"><a href="" id="buttonText">Refresh Users</a></button>
+            <p>Last Updated: <span id="dateText"></span></p>
+            
+            <script>
+                const now = new Date();
+                document.getElementById("dateText").textContent = now;
+            </script>
+
             <div id="message"></div>
             <table id="usertable" class="table table-bordered table-striped">
                 <!--app.js code fills this table already.-->
@@ -64,7 +76,7 @@
             <input type="text" id="passwd" name="passwd" class="form-control mb-3"></input>
             <label for="urole" class="form-label">U-Role</label><br>
             <input type="text" id="urole" name="urole" class="form-control mb-3"></input>
-            <button type="button" id="submitButton" class="btn btn-primary">Add User</button>
+            <button type="button" id="submitButton" class="btn btn-primary" href="home.html">Add User</button>
         </form>
     </div>
 
